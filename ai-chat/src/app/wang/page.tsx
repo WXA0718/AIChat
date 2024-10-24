@@ -53,7 +53,7 @@ export default function Home() {
             }`}
           onClick={() => handleRoleSelect('Tarou')}
         >
-          <img src="/images/friend1.png" alt="Tarou" className="mb-4 mx-auto rounded-full h-32 w-32" />
+          <img src="/images/Tarou.png" alt="Tarou" className="mb-4 mx-auto rounded-full h-32 w-32" />
           <h2 className="text-2xl font-semibold text-black">タロウくん</h2>
           <p className="text-gray-600 mt-2">あなたの心と健康を守ります</p>
           <button className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg">スタート！</button>
@@ -65,7 +65,7 @@ export default function Home() {
             }`}
           onClick={() => handleRoleSelect('Yamada')}
         >
-          <img src="/images/friend2.png" alt="Yamada" className="mb-4 mx-auto rounded-full h-32 w-32" />
+          <img src="/images/Yamada.png" alt="Yamada" className="mb-4 mx-auto rounded-full h-32 w-32" />
           <h2 className="text-2xl font-semibold text-black">山田先生</h2>
           <p className="text-gray-600 mt-2">あなたの心と健康を守ります</p>
           <button className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg">スタート！</button>
@@ -77,7 +77,7 @@ export default function Home() {
             }`}
           onClick={() => handleRoleSelect('Sakurai')}
         >
-          <img src="/images/teacher.png" alt="Sakurai" className="mb-4 mx-auto rounded-full h-32 w-32" />
+          <img src="/images/Sakurai.png" alt="Sakurai" className="mb-4 mx-auto rounded-full h-32 w-32" />
           <h2 className="text-2xl font-semibold text-black">桜井あかり先生</h2>
           <p className="text-gray-600 mt-2">あなたの心と健康を守ります</p>
           <button className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg">スタート！</button>
