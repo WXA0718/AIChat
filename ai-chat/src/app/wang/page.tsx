@@ -78,7 +78,7 @@ export default function Home() {
           onClick={() => handleRoleSelect('Sakurai')}
         >
           <img src="/images/Sakurai.png" alt="Sakurai" className="mb-4 mx-auto rounded-full h-32 w-32" />
-          <h2 className="text-2xl font-semibold text-black">桜井あかり先生</h2>
+          <h2 className="text-2xl font-semibold text-black">桜井先生</h2>
           <p className="text-gray-600 mt-2">あなたの心と健康を守ります</p>
           <button className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg">スタート！</button>
         </div>
