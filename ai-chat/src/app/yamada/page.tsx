@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import styles from './page.module.css'; // CSS Module for styling
 
@@ -8,13 +8,18 @@ export default function Home() {
   const [messages, setMessages] = useState([]); // メッセージを管理するステート
   const [inputMessage, setInputMessage] = useState(""); // 入力されたメッセージのステート
 
+  // 初回レンダリング時に自己紹介メッセージを表示
+  useEffect(() => {
+    setMessages([{ sender: "bot", text: "こんにちわ、私の名前は先生です" }]);
+  }, []);
+
   const handleSendMessage = () => {
     if (inputMessage.trim()) {
       // ユーザーのメッセージと固定の返信を追加
       setMessages((prevMessages) => [
         ...prevMessages,
         { sender: "user", text: inputMessage },
-        { sender: "bot", text: "こんにちわ、私の名前は先生です" }
+        { sender: "bot", text: "そうなんだね！　～～～" }
       ]);
       setInputMessage(""); // 入力フィールドをクリア
     }
