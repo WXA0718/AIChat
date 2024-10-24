@@ -9,32 +9,6 @@ export default function Home() {
 
   const handleRoleSelect = async (role: string) => {
     setSelectedRole(role);
-
-    let apiKey;
-    const domainName = process.env.NEXT_PUBLIC_DOMAIN_NAME;
-
-    // キャラクターごとにAPIキーを切り替え
-    if (role === 'Tarou') {
-      apiKey = process.env.NEXT_PUBLIC_API_KEY_TAROU;
-    } else if (role === 'Yamada') {
-      apiKey = process.env.NEXT_PUBLIC_API_KEY_YAMADA;
-    } else if (role === 'Sakurai') {
-      apiKey = process.env.NEXT_PUBLIC_API_KEY_SAKURAI;
-    }
-
-    // APIリクエストを送信
-    const res = await fetch(`${domainName}/api/hello`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,  // 選択されたキャラクターのAPIキーを使用
-      },
-      body: JSON.stringify({ role }),
-    });
-
-    if (!res.ok) {
-      setErrorMessage('API認証に失敗しました');
-    }
   };
 
   return (
@@ -57,7 +31,7 @@ export default function Home() {
           <img src="/images/Tarou.png" alt="Tarou" className="mb-4 mx-auto rounded-full h-32 w-32" />
           <h2 className="text-2xl font-semibold text-black">タロウくん</h2>
           <p className="text-gray-600 mt-2">あなたの心と健康を守ります</p>
-          <Link href={"/isoi"}>
+          <Link href={"/tarou"}>
           <button className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg">スタート！</button>
           </Link>
         </div>
@@ -71,7 +45,7 @@ export default function Home() {
           <img src="/images/Yamada.png" alt="Yamada" className="mb-4 mx-auto rounded-full h-32 w-32" />
           <h2 className="text-2xl font-semibold text-black">山田先生</h2>
           <p className="text-gray-600 mt-2">あなたの心と健康を守ります</p>
-          <Link href={"/isoi"}>
+          <Link href={"/yamada"}>
           <button className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg">スタート！</button>
           </Link>
         </div>
@@ -85,7 +59,7 @@ export default function Home() {
           <img src="/images/Sakurai.png" alt="Sakurai" className="mb-4 mx-auto rounded-full h-32 w-32" />
           <h2 className="text-2xl font-semibold text-black">桜井先生</h2>
           <p className="text-gray-600 mt-2">あなたの心と健康を守ります</p>
-          <Link href={"/isoi"}>
+          <Link href={"/hoken"}>
           <button className="mt-4 py-2 px-4 bg-blue-500 text-white rounded-lg">スタート！</button>
           </Link>
         </div>
