@@ -2,27 +2,22 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from './page.module.css'; // CSS Module for styling
+import styles from './page.module.css';
+import InputBox from '../components/InputBox'; 
 
 export default function Home() {
-  const [messages, setMessages] = useState([]); // メッセージを管理するステート
-  const [inputMessage, setInputMessage] = useState(""); // 入力されたメッセージのステート
+  const [messages, setMessages] = useState([]);
 
   // 初回レンダリング時に自己紹介メッセージを表示
   useEffect(() => {
     setMessages([{ sender: "bot", text: "こんにちわ！僕の名前はタロウだよ！" }]);
   }, []);
-
-  const handleSendMessage = () => {
-    if (inputMessage.trim()) {
-      // ユーザーのメッセージと固定の返信を追加
-      setMessages((prevMessages) => [
-        ...prevMessages,
-        { sender: "user", text: inputMessage },
-        { sender: "bot", text: "すごいね！　～～～" }
-      ]);
-      setInputMessage(""); // 入力フィールドをクリア
-    }
+  const handleSendMessage = (inputMessage: string) => {
+    setMessages((prevMessages) => [
+      ...prevMessages,
+      { sender: "user", text: inputMessage },
+      { sender: "bot", text: "すごいね！　～～～" }
+    ]);
   };
 
   return (
@@ -50,19 +45,8 @@ export default function Home() {
         ))}
       </div>
 
-      {/* メッセージ入力エリア */}
-      <div className={styles.inputBox}>
-        <input
-          className={styles.inputField}
-          type="text"
-          placeholder="メッセージを入力してください..."
-          value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)} // 入力内容をステートに保存
-        />
-        <button className={styles.sendButton} onClick={handleSendMessage}>
-          送信
-        </button>
-      </div>
+      {/* メッセージ入力エリア（新しいコンポーネントを利用） */}
+      <InputBox onSendMessage={handleSendMessage} />
     </div>
   );
 }
