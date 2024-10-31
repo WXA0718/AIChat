@@ -1,5 +1,6 @@
 "use client"; // これを追加
 
+<<<<<<< Updated upstream
 
 import React, { useState } from 'react';
 import styles from './page.module.css'; // Ensure your CSS module is imported
@@ -58,12 +59,52 @@ const ChatPage = () => {
 
     return (
         <div className={styles.chatContainer}>
+=======
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import styles from './page.module.css'; // CSS Module for styling
+import { DB_GET, DB_POST } from "../api/hello/db"; // Adjust the import path as needed
+
+export default function Home() {
+    const [messages, setMessages] = useState([]); // State to manage messages
+    const [inputMessage, setInputMessage] = useState(""); // State for input message
+
+    useEffect(() => {
+        async function fetchMessages() {
+            const chatMessages = await DB_GET();
+            setMessages(chatMessages.map(chat => ({ sender: "bot", text: chat.message })));
+        }
+        fetchMessages();
+    }, []);
+
+    const handleSendMessage = async () => {
+        if (inputMessage.trim()) {
+            // User message handling
+            const userMessage = { sender: "user", text: inputMessage };
+            setMessages((prevMessages) => [...prevMessages, userMessage]);
+
+            // AI response handling
+            const response = await DB_POST(inputMessage, "AI_TYPE"); // AI_TYPEを適切に指定する
+            const botMessage = { sender: "bot", text: response.message }; // 受け取ったメッセージを設定
+            setMessages((prevMessages) => [...prevMessages, botMessage]);
+            setInputMessage(""); // 入力フィールドをクリア
+        }
+    };
+
+    return (
+        <div className={styles.chatContainer}>
+            {/* Chat area */}
+>>>>>>> Stashed changes
             <div className={styles.chatBox}>
                 {messages.map((message, index) => (
                     <div key={index} className={message.sender === "user" ? styles.messageRowOutgoing : styles.messageRow}>
                         {message.sender === "bot" && (
                             <div className={styles.icon}>
+<<<<<<< Updated upstream
                                 <Image src="/images/Yamada.png" alt="先生のアイコン" width={40} height={40} />
+=======
+                                <Image src="/images/Yamada.png" alt="Bot Icon" width={40} height={40} />
+>>>>>>> Stashed changes
                             </div>
                         )}
                         <div className={styles.messageBubble}>
@@ -78,13 +119,21 @@ const ChatPage = () => {
                 ))}
             </div>
 
+<<<<<<< Updated upstream
+=======
+            {/* Message input area */}
+>>>>>>> Stashed changes
             <div className={styles.inputBox}>
                 <input
                     className={styles.inputField}
                     type="text"
                     placeholder="メッセージを入力してください..."
                     value={inputMessage}
+<<<<<<< Updated upstream
                     onChange={(e) => setInputMessage(e.target.value)}
+=======
+                    onChange={(e) => setInputMessage(e.target.value)} // Update state with input value
+>>>>>>> Stashed changes
                 />
                 <button className={styles.sendButton} onClick={handleSendMessage}>
                     送信
@@ -92,6 +141,7 @@ const ChatPage = () => {
             </div>
         </div>
     );
+<<<<<<< Updated upstream
 };
 
 
@@ -100,3 +150,6 @@ export default ChatPage; // Use ChatPage as the default export
 
 // If you want to use MyComponent, you can export it separately
 // export { MyComponent };
+=======
+}
+>>>>>>> Stashed changes
