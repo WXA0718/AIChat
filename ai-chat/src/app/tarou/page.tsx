@@ -1,24 +1,66 @@
 'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import styles from './page.module.css';
-import InputBox from '../components/InputBox'; 
+import InputBox from '../components/InputBox';
+import axios from "axios";
 
 export default function Home() {
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([{ sender: "bot", text: "こんにちは！僕の名前はタロウだよ！" }]);
+  const [geminiResponse, setGeminiResponse] = useState<string>("");
+
 
   // 初回レンダリング時に自己紹介メッセージを表示
   useEffect(() => {
-    setMessages([{ sender: "bot", text: "こんにちわ！僕の名前はタロウだよ！" }]);
+    setMessages(messages);
   }, []);
-  const handleSendMessage = (inputMessage: string) => {
-    setMessages((prevMessages) => [
-      ...prevMessages,
-      { sender: "user", text: inputMessage },
-      { sender: "bot", text: "すごいね！　～～～" }
-    ]);
-  };
+
+  const handleSendMessage = useCallback((inputMessage: string) => {
+    //  空文字は送信しない
+    if (!inputMessage) {
+      return;
+    }
+
+    setMessages(prevMessages => {
+      const api_key = process.env.WANPAKU_API_KEY;
+      const newMessages = [...prevMessages, { sender: "user", text: inputMessage }];
+      // botの返答を非同期で処理する例
+      const postData = async () => {
+        const endPoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${api_key}`;
+        const body = {
+          contents: [
+            {
+              parts: [
+                {
+                  text: inputMessage,
+                },
+              ],
+            },
+          ],
+        };
+
+        const response = await axios.post(endPoint, body, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const data = response.data.candidates[0].content.parts[0].text;
+        setGeminiResponse(data)
+        newMessages.push({ sender: "bot", text: geminiResponse });
+        setMessages(newMessages);
+      }
+
+      postData()
+
+      console.log(newMessages)
+      console.log(inputMessage)
+      console.log(messages)
+
+      return newMessages;
+    });
+  }, [messages]);
 
   return (
     <div className={styles.chatContainer}>
@@ -50,3 +92,4 @@ export default function Home() {
     </div>
   );
 }
+
