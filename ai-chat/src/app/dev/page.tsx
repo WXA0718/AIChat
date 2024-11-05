@@ -11,7 +11,7 @@ export default function Home() {
   const [geminiResponse, setGeminiResponse] = useState("");
   const apiKey = process.env.WANPAKU_API_KEY;
 
-  const genAI = new GoogleGenerativeAI(apiKey ? apiKey : "");
+  const genAI = new GoogleGenerativeAI(apiKey ? apiKey : "AIzaSyDLj7swqFcdwK0Sv_08aXxCObAVoleZ27U");
 
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-pro-002",
@@ -296,9 +296,7 @@ export default function Home() {
         const text = response.text();
         // console.log(text);
 
-        setGeminiResponse(text);
-        newMessages.push({ sender: "bot", text: geminiResponse });
-        return messages;
+        setMessages((prevMessages) => [...prevMessages, { sender: "bot", text: text }]);
       }
 
       postData()
