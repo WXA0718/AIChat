@@ -2,7 +2,7 @@ export async function POST(request) {
   const { name } = await request.json();
 
   // API呼び出し
-  const apiResponse = await fetch('https://fuwapachi.taild2ed0.ts.net/chats/index', {
+  const apiResponse = await fetch('ひみつ♡', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
