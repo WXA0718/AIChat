@@ -7,9 +7,9 @@ import styles from './page.module.css';
 import InputBox from '../components/InputBox';
 
 export default function Home() {
-  const [messages, setMessages] = useState([{ sender: "bot", text: "こんにちは！僕の名前はタロウだよ！" }]);
+  const [messages, setMessages] = useState([{ sender: "bot", text: "こんにちは！桜井よ。話を聞こうか？" }]);
   const [geminiResponse, setGeminiResponse] = useState("");
-  const apiKey = process.env.WANPAKU_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY_SAKURAI;
 
   const genAI = new GoogleGenerativeAI(apiKey ? apiKey : "");
 
@@ -320,7 +320,7 @@ export default function Home() {
             {message.sender === "bot" && (
               <div className={styles.icon}>
                 {/* 相手のアイコン */}
-                <Image src="/images/Tarou.png" alt="少年のアイコン" width={40} height={40} />
+                <Image src="/images/sakurai.png" alt="少年のアイコン" width={40} height={40} />
               </div>
             )}
             <div className={styles.messageBubble}>

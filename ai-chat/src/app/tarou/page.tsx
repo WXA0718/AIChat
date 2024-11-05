@@ -9,7 +9,7 @@ import InputBox from '../components/InputBox';
 export default function Home() {
   const [messages, setMessages] = useState([{ sender: "bot", text: "こんにちは！僕の名前はタロウだよ！" }]);
   const [geminiResponse, setGeminiResponse] = useState("");
-  const apiKey = process.env.WANPAKU_API_KEY;
+  const apiKey = process.env.NEXT_PUBLIC_API_KEY_TAROU;
 
   const genAI = new GoogleGenerativeAI(apiKey ? apiKey : "");
 
