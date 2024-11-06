@@ -9,7 +9,8 @@ import InputBox from '../components/InputBox';
 export default function Home() {
   const [messages, setMessages] = useState([{ sender: "bot", text: "こんにちは！僕の名前はタロウだよ！" }]);
   const [geminiResponse, setGeminiResponse] = useState("");
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY_TAROU;
+  // const apiKey = process.env.NEXT_PUBLIC_API_KEY_TAROU;
+  const apiKey = "AIzaSyDLj7swqFcdwK0Sv_08aXxCObAVoleZ27U"
 
   const genAI = new GoogleGenerativeAI(apiKey ? apiKey : "");
 
@@ -296,9 +297,7 @@ export default function Home() {
         const text = response.text();
         // console.log(text);
 
-        setGeminiResponse(text);
-        newMessages.push({ sender: "bot", text: geminiResponse });
-        return messages;
+        setMessages((prevMessages) => [...prevMessages, { sender: "bot", text: text }]);
       }
 
       postData()
