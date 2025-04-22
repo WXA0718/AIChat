@@ -26,6 +26,20 @@ Google Gemma2 にてファインチューニングをした3つのモデルを�
 | ローカル駆動 | Ollama(dev) |
 | その他 | Tailscale(funnel) |
 
+## 開発について
+フレームワークについて、Vue3とNextで検討し、  
+1. 情報量が豊富  
+2. 使ったことがないものを触ってみたい(vue3はインターンで経験)
+   
+ということからNext.jsでの開発を採用.  
+2週間の学習期間からハンズオンという形で作成を開始.  
+また、当初はlocalLLMをやってみたいねということで、  
+自宅vmにollamaを構築しそことのやり取りを行っていた.([API](https://github.com/Sanchi7412/chatai-api/tree/master))  
+しかし、推論時間が長すぎて断念. 以降Google AI Studioを利用.  
+それぞれ経験が浅かったため、GitHubやNode.jsについての勉強会を実施し、相互理解を深めることで開発についてのモチベーションを維持.  
+結果として、実際に動作するものが完成し発表と同時に実演を披露.  
+8チーム中2位の成績で終了.  
+
 ## リンク集
 - [企画書](https://peridot-playground-76d.notion.site/planning?pvs=4)
 - [タスク管理](https://peridot-playground-76d.notion.site/task?v=4ac5ae28f7f340e88f7013413935f8e2&pvs=4)
