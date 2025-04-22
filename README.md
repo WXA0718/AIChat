@@ -44,4 +44,4 @@ Google Gemma2 にてファインチューニングをした3つのモデルを�
 - [企画書](https://peridot-playground-76d.notion.site/planning?pvs=4)
 - [タスク管理](https://peridot-playground-76d.notion.site/task?v=4ac5ae28f7f340e88f7013413935f8e2&pvs=4)
 - [提出資料(ハッカソン)](https://drive.google.com/file/d/1Cj9RW3KVWyKUNHCz8rSzxFfHEJI93ASq/view?usp=sharing)
-- [提出資料(本作品)](https://drive.google.com/drive/u/0/folders/1EWDnmkeEe0lTmKxbyBjxVG7ZPiTeoP82)
+- [提出資料(本作品)](https://drive.google.com/file/d/18p_ot3ftAegNo3Oe0zBVKxvbNC0H1pUy/view?usp=drive_link)
